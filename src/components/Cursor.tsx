@@ -5,9 +5,13 @@ export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    let mouseX = 0, mouseY = 0
+
     const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX
+      mouseY = e.clientY
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
+        dotRef.current.style.transform = `translate(${mouseX}px, ${mouseY}px)`
       }
     }
 
@@ -30,6 +34,8 @@ export default function Cursor() {
   }, [])
 
   return (
-    <div ref={dotRef} className={styles.dot} />
+    <>
+      <div ref={dotRef} className={styles.dot} />
+    </>
   )
 }

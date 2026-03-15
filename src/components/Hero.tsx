@@ -105,7 +105,6 @@ export default function Hero() {
             <OutLine    delay={1600} text="Hugging Face · FastAPI · Docker" />
             <TypedLine  delay={1900} prompt="$" cmd="cat mission.txt" />
             <OutLine    delay={2200} text="Turning AI research into real products." accent />
-            <TypedLine  delay={2500} prompt="$" />
           </div>
         </motion.div>
 
