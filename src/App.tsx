@@ -8,11 +8,13 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollProgress from './components/ScrollProgress'
+import Cursor from './components/Cursor'
 import './App.css'
 
 function App() {
   return (
     <div className="app">
+      <Cursor />
       <ScrollProgress />
       <Navbar />
       <main>
