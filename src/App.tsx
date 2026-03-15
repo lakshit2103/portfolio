@@ -7,14 +7,12 @@ import Certifications from './components/Certifications'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import Cursor from './components/Cursor'
 import ScrollProgress from './components/ScrollProgress'
 import './App.css'
 
 function App() {
   return (
     <div className="app">
-      <Cursor />
       <ScrollProgress />
       <Navbar />
       <main>
