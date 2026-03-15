@@ -1,0 +1,95 @@
+.heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.sub {
+  font-size: 1rem; color: #9ca3af;
+  max-width: 560px; line-height: 1.8; margin-bottom: 52px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: #0b0b0b;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 24px 24px 28px;
+  cursor: none;
+  transition: border-color 0.25s, background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top gradient line on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card:hover { border-color: rgba(168,85,247,0.22); background: #0f0f0f; }
+.card:hover::before { opacity: 1; }
+
+/* Inner glow */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
+}
+.card:hover::after { opacity: 1; }
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.iconBox {
+  width: 36px; height: 36px;
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.18);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a855f7;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+.card:hover .iconBox { background: rgba(168,85,247,0.18); }
+
+.card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 700;
+}
+
+.card ul { display: flex; flex-direction: column; gap: 10px; }
+.card li {
+  font-size: 0.85rem; color: #9ca3af;
+  padding-left: 16px; position: relative; line-height: 1.5;
+}
+.card li::before {
+  content: '•'; position: absolute; left: 0;
+  color: #a855f7;
+}
+
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }

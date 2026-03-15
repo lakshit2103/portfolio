@@ -1,0 +1,125 @@
+.heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+}
+
+.timeline { display: flex; flex-direction: column; }
+
+.entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+.yearCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #4b5563;
+  text-align: right;
+  letter-spacing: 0.3px;
+}
+
+.dotLine { display: flex; flex-direction: column; align-items: center; }
+
+.dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: #1f1f1f;
+  border: 2px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+  transition: all 0.25s;
+}
+
+.active .dot {
+  background: #a855f7;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(168,85,247,0.45);
+}
+
+.line {
+  width: 1px;
+  flex: 1;
+  min-height: 48px;
+  background: rgba(255,255,255,0.06);
+  margin-top: 8px;
+}
+
+.card {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 22px 26px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: rgba(168,85,247,0.2); }
+.active .card {
+  border-color: rgba(168,85,247,0.18);
+  background: rgba(168,85,247,0.02);
+}
+
+.status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  color: #4b5563;
+  display: block;
+  margin-bottom: 8px;
+}
+.active .status { color: #a855f7; }
+
+.card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.school {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #c084fc;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 0.86rem;
+  color: #9ca3af;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.metric {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(168,85,247,0.07);
+  border: 1px solid rgba(168,85,247,0.14);
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+.metric strong { color: #d8b4fe; font-weight: 700; }
+
+@media (max-width: 720px) {
+  .entry { grid-template-columns: 1fr; }
+  .yearCol { flex-direction: row; align-items: center; }
+  .dotLine { flex-direction: row; }
+  .line { display: none; }
+}

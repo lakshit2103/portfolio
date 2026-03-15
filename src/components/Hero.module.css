@@ -1,0 +1,173 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 48px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ambient blobs */
+.blob1 {
+  position: absolute;
+  top: 10%; right: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: blobFloat1 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+.blob2 {
+  position: absolute;
+  bottom: 5%; left: -10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: blobFloat2 10s ease-in-out infinite alternate;
+  z-index: 0;
+}
+@keyframes blobFloat1 { 0%{transform:translate(0,0)} 100%{transform:translate(-30px,40px)} }
+@keyframes blobFloat2 { 0%{transform:translate(0,0)} 100%{transform:translate(30px,-30px)} }
+
+.left  { display: flex; flex-direction: column; position: relative; z-index: 1; }
+.right { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
+
+.greeting {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  letter-spacing: -0.5px;
+}
+
+.name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2.5px;
+  margin-bottom: 6px;
+}
+
+.roleBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
+}
+
+.roleWord {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  will-change: opacity, transform;
+}
+
+.roleIn  { opacity: 1; transform: translateY(0); }
+.roleOut { opacity: 0; transform: translateY(-10px); }
+
+.desc {
+  font-size: 1rem;
+  color: #9ca3af;
+  max-width: 480px;
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Terminal */
+.terminal {
+  background: rgba(10,10,10,0.95);
+  border: 1px solid rgba(168,85,247,0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(168,85,247,0.04),
+    0 24px 60px rgba(0,0,0,0.7),
+    inset 0 0 60px rgba(168,85,247,0.02);
+  backdrop-filter: blur(12px);
+}
+
+.termBar {
+  background: #111;
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.red    { background: #ff5f57; }
+.yellow { background: #febc2e; }
+.green  { background: #28c840; }
+.termTitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.71rem;
+  color: #4b5563;
+  margin-left: 10px;
+}
+.termBody {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 200px;
+}
+.termBody p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:none} }
+
+/* Stats */
+.stats { display: flex; gap: 12px; }
+.statPill {
+  flex: 1;
+  background: rgba(13,13,13,0.8);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.25s, transform 0.25s;
+  backdrop-filter: blur(8px);
+}
+.statPill:hover { border-color: rgba(168,85,247,0.3); transform: translateY(-3px); }
+
+.statN {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg,#a855f7,#ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.statL {
+  font-size: 0.69rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 110px; gap: 40px; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 100px 24px 60px; }
+  .actions { flex-direction: column; }
+  .stats { flex-wrap: wrap; }
+  .blob1, .blob2 { display: none; }
+}

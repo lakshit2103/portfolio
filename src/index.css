@@ -1,0 +1,198 @@
+/* =============================================
+   LAKSHIT PORTFOLIO — GLOBAL STYLES v2
+   Advanced | namannagi-inspired | React+Vite
+   ============================================= */
+
+:root {
+  --black: #000000;
+  --dark: #080808;
+  --card: #0d0d0d;
+  --card2: #131313;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.12);
+
+  --purple: #a855f7;
+  --purple-light: #d8b4fe;
+  --pink: #ec4899;
+  --gradient: linear-gradient(135deg, #a855f7, #ec4899);
+  --gradient2: linear-gradient(135deg, #f97316, #ec4899);
+  --glow-purple: 0 0 40px rgba(168,85,247,0.15);
+  --glow-pink:   0 0 40px rgba(236,72,153,0.12);
+
+  --text: #ffffff;
+  --text2: #9ca3af;
+  --text3: #4b5563;
+
+  --font: 'Inter', sans-serif;
+  --font-alt: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  --r: 10px;
+  --r2: 16px;
+  --tr: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple) #111;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #a855f7, #ec4899); border-radius: 2px; }
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.65;
+  cursor: none;
+}
+
+@media (hover: none) { body { cursor: auto; } }
+
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button { cursor: none; border: none; background: none; font: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ── BACKGROUND GRID ───────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(168,85,247,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,247,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── AMBIENT GLOWS ─────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  top: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: ambientFloat 12s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(200px, 150px) scale(1.2); }
+  100% { transform: translate(400px, 50px) scale(0.9); }
+}
+
+/* ── CONTAINER ─────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-row {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+/* ── SECTION LABEL ─────────────────────────── */
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 28px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--purple));
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── GRADIENT TEXT ─────────────────────────── */
+.grad        { background: var(--gradient2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.grad-purple { background: var(--gradient);  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ── BUTTONS ───────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: var(--tr);
+  cursor: none;
+  border: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.25s;
+}
+.btn:hover::before { background: rgba(255,255,255,0.06); }
+
+.btn-primary {
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(168,85,247,0.25);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(168,85,247,0.4); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border2);
+  backdrop-filter: blur(8px);
+}
+.btn-outline:hover { border-color: rgba(168,85,247,0.5); color: var(--purple-light); background: rgba(168,85,247,0.05); transform: translateY(-2px); }
+
+.btn-lg { padding: 15px 30px; font-size: 0.95rem; }
+
+/* ── GLOW CARD BASE ────────────────────────── */
+.glow-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.glow-card:hover {
+  border-color: rgba(168,85,247,0.2);
+  box-shadow: var(--glow-purple);
+  transform: translateY(-4px);
+}
+
+/* ── SCROLLBAR HIDDEN FOR ELEMENTS ────────── */
+::-webkit-scrollbar-corner { background: transparent; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .section-row { padding: 72px 0; }
+}
